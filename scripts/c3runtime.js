@@ -4313,8 +4313,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Sin,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Sprite.Acts.SetVisible,
-		C3.Plugins.Audio.Acts.Play,
 		C3.Behaviors.Flash.Acts.Flash,
+		C3.Plugins.System.Cnds.Compare,
+		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.Mouse.Cnds.IsOverObject,
@@ -4324,20 +4325,26 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.OnLayoutEnd,
 		C3.Plugins.Audio.Acts.Stop,
+		C3.Plugins.Sprite.Cnds.IsVisible,
+		C3.Plugins.Audio.Acts.SetPaused,
+		C3.Plugins.Sprite.Acts.SetInstanceVar,
+		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Cnds.For,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Acts.CreateObject,
-		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Sprite.Exps.IID,
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Text.Acts.AppendText,
-		C3.Plugins.Sprite.Acts.SetAnim,
+		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.Sprite.Exps.X,
+		C3.Plugins.Sprite.Exps.Y,
+		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.SubVar,
 		C3.Plugins.System.Cnds.TriggerOnce
@@ -4370,6 +4377,13 @@ self.C3_JsPropNameTable = [
 	{hazirlayanlar: 0},
 	{Carpıım: 0},
 	{skor: 0},
+	{durum: 0},
+	{btnMuzik: 0},
+	{tikNo: 0},
+	{sayil1: 0},
+	{sayil11: 0},
+	{dikey: 0},
+	{yatay: 0},
 	{butonlar: 0},
 	{x: 0},
 	{y: 0},
@@ -4402,6 +4416,11 @@ self.InstanceType = {
 	hazirlayanlar: class extends self.ISpriteInstance {},
 	Carpıım: class extends self.ITextInstance {},
 	skor: class extends self.ITextInstance {},
+	btnMuzik: class extends self.ISpriteInstance {},
+	sayil1: class extends self.ISpriteInstance {},
+	sayil11: class extends self.ISpriteInstance {},
+	dikey: class extends self.ISpriteInstance {},
+	yatay: class extends self.ISpriteInstance {},
 	butonlar: class extends self.ISpriteInstance {}
 }
 }
@@ -4503,13 +4522,19 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
-		() => 0,
-		() => "muzik",
 		() => 0.1,
 		() => 1,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
+		},
+		() => 0,
+		() => "muzik",
 		() => "",
 		() => "bilgi",
 		() => "background",
+		() => "close",
+		() => "open",
 		() => 10,
 		() => "x_degeri",
 		() => 11,
@@ -4521,7 +4546,7 @@ self.C3_ExpressionFuncs = [
 		() => "y_degeri",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => ((-20) + (94 * (v0.GetValue() - 10)));
+			return () => ((-20) + (93 * (v0.GetValue() - 10)));
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -4557,11 +4582,17 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
+			return () => and("X", n0.ExpInstVar());
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => and("X", n0.ExpInstVar());
+			return () => n0.ExpObject();
+		},
+		() => 588,
+		() => 430,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 11);
 		},
 		() => "Animation 2",
 		() => "Doğru",
