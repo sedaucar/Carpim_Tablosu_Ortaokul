@@ -4384,6 +4384,9 @@ self.C3_JsPropNameTable = [
 	{sayil11: 0},
 	{dikey: 0},
 	{yatay: 0},
+	{buyukLamba: 0},
+	{kucukLamba: 0},
+	{ortaLamba: 0},
 	{butonlar: 0},
 	{x: 0},
 	{y: 0},
@@ -4421,6 +4424,9 @@ self.InstanceType = {
 	sayil11: class extends self.ISpriteInstance {},
 	dikey: class extends self.ISpriteInstance {},
 	yatay: class extends self.ISpriteInstance {},
+	buyukLamba: class extends self.ISpriteInstance {},
+	kucukLamba: class extends self.ISpriteInstance {},
+	ortaLamba: class extends self.ISpriteInstance {},
 	butonlar: class extends self.ISpriteInstance {}
 }
 }
@@ -4528,6 +4534,7 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
 		},
+		() => -1,
 		() => 0,
 		() => "muzik",
 		() => "",
@@ -4536,6 +4543,8 @@ self.C3_ExpressionFuncs = [
 		() => "close",
 		() => "open",
 		() => 10,
+		() => -3,
+		() => "ses",
 		() => "x_degeri",
 		() => 11,
 		() => 19,
@@ -4588,8 +4597,8 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
-		() => 588,
-		() => 430,
+		() => 576,
+		() => 443,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 11);
