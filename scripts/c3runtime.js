@@ -4584,7 +4584,7 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (105 + (92 * (v0.GetValue() - 10)));
+			return () => (104 + (92 * (v0.GetValue() - 10)));
 		},
 		() => "",
 		p => {
@@ -4599,11 +4599,11 @@ self.C3_ExpressionFuncs = [
 		() => 2,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (900 + (103 * v0.GetValue()));
+			return () => (895 + (103 * v0.GetValue()));
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (370 + (105 * v0.GetValue()));
+			return () => (365 + (105 * v0.GetValue()));
 		},
 		p => {
 			const n0 = p._GetNode(0);
