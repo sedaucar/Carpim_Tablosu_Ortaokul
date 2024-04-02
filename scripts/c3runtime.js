@@ -4308,9 +4308,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Audio,
 		C3.Plugins.Browser,
 		C3.Plugins.Sprite,
-		C3.Plugins.Text,
 		C3.Behaviors.Flash,
 		C3.Behaviors.Sin,
+		C3.Plugins.Text,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Behaviors.Flash.Acts.Flash,
@@ -4325,16 +4325,13 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.OnLayoutEnd,
 		C3.Plugins.Audio.Acts.Stop,
-		C3.Plugins.Sprite.Cnds.IsVisible,
-		C3.Plugins.Audio.Acts.SetPaused,
-		C3.Plugins.Sprite.Acts.SetInstanceVar,
-		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Cnds.For,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Acts.CreateObject,
+		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Sprite.Exps.IID,
 		C3.Plugins.System.Exps.tokenat,
@@ -4345,9 +4342,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
+		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.SubVar,
-		C3.Plugins.System.Cnds.TriggerOnce
+		C3.Plugins.System.Cnds.TriggerOnce,
+		C3.Plugins.Sprite.Cnds.IsVisible,
+		C3.Plugins.Audio.Acts.SetPaused
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4366,7 +4366,6 @@ self.C3_JsPropNameTable = [
 	{number1: 0},
 	{btnCevap: 0},
 	{btn1: 0},
-	{DY: 0},
 	{backgroundHome: 0},
 	{Flash: 0},
 	{Sine: 0},
@@ -4384,10 +4383,25 @@ self.C3_JsPropNameTable = [
 	{sayil11: 0},
 	{dikey: 0},
 	{yatay: 0},
-	{buyukLamba: 0},
-	{kucukLamba: 0},
-	{ortaLamba: 0},
+	{btnSes: 0},
+	{dogruyanlis: 0},
+	{lamba: 0},
+	{lamba2: 0},
+	{lamba3: 0},
+	{lamba4: 0},
+	{lamba5: 0},
+	{lamba6: 0},
+	{lamba7: 0},
+	{lamba8: 0},
+	{lamba9: 0},
+	{lamba10: 0},
+	{lamba11: 0},
+	{lamba12: 0},
+	{lamba13: 0},
+	{lamba14: 0},
+	{lamba15: 0},
 	{butonlar: 0},
+	{lambalar: 0},
 	{x: 0},
 	{y: 0},
 	{tiklandi: 0},
@@ -4410,7 +4424,6 @@ self.InstanceType = {
 	background: class extends self.ISpriteInstance {},
 	number1: class extends self.ISpriteInstance {},
 	btn1: class extends self.ISpriteInstance {},
-	DY: class extends self.ITextInstance {},
 	backgroundHome: class extends self.ISpriteInstance {},
 	btnBasla: class extends self.ISpriteInstance {},
 	bilgi: class extends self.ISpriteInstance {},
@@ -4424,10 +4437,25 @@ self.InstanceType = {
 	sayil11: class extends self.ISpriteInstance {},
 	dikey: class extends self.ISpriteInstance {},
 	yatay: class extends self.ISpriteInstance {},
-	buyukLamba: class extends self.ISpriteInstance {},
-	kucukLamba: class extends self.ISpriteInstance {},
-	ortaLamba: class extends self.ISpriteInstance {},
-	butonlar: class extends self.ISpriteInstance {}
+	btnSes: class extends self.ISpriteInstance {},
+	dogruyanlis: class extends self.ISpriteInstance {},
+	lamba: class extends self.ISpriteInstance {},
+	lamba2: class extends self.ISpriteInstance {},
+	lamba3: class extends self.ISpriteInstance {},
+	lamba4: class extends self.ISpriteInstance {},
+	lamba5: class extends self.ISpriteInstance {},
+	lamba6: class extends self.ISpriteInstance {},
+	lamba7: class extends self.ISpriteInstance {},
+	lamba8: class extends self.ISpriteInstance {},
+	lamba9: class extends self.ISpriteInstance {},
+	lamba10: class extends self.ISpriteInstance {},
+	lamba11: class extends self.ISpriteInstance {},
+	lamba12: class extends self.ISpriteInstance {},
+	lamba13: class extends self.ISpriteInstance {},
+	lamba14: class extends self.ISpriteInstance {},
+	lamba15: class extends self.ISpriteInstance {},
+	butonlar: class extends self.ISpriteInstance {},
+	lambalar: class extends self.ISpriteInstance {}
 }
 }
 
@@ -4537,14 +4565,11 @@ self.C3_ExpressionFuncs = [
 		() => -1,
 		() => 0,
 		() => "muzik",
-		() => "",
 		() => "bilgi",
 		() => "background",
-		() => "close",
-		() => "open",
+		() => "ses",
 		() => 10,
 		() => -3,
-		() => "ses",
 		() => "x_degeri",
 		() => 11,
 		() => 19,
@@ -4561,6 +4586,7 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			return () => (110 + (92 * (v0.GetValue() - 10)));
 		},
+		() => "",
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			const v1 = p._GetNode(1).GetVar();
@@ -4577,7 +4603,7 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
-			return () => (378 + (105 * v0.GetValue()));
+			return () => (370 + (105 * v0.GetValue()));
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -4604,17 +4630,21 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpObject() + 11);
 		},
 		() => "Animation 2",
-		() => "Doğru",
 		() => "Animation 1",
-		() => "Yanlış",
 		() => 3,
+		() => 4,
+		() => 6,
 		() => 7,
+		() => 8,
+		() => 12,
+		() => 13,
+		() => 14,
 		() => 15,
 		() => 20,
 		() => 25,
 		() => 30,
-		() => 40,
-		() => 50
+		() => "close",
+		() => "open"
 ];
 
 
