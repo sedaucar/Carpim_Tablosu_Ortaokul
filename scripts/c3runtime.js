@@ -4317,21 +4317,24 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
+		C3.Plugins.Audio.Acts.SetPaused,
+		C3.Plugins.Sprite.Acts.SetInstanceVar,
+		C3.Plugins.Sprite.Acts.SetAnim,
+		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.Mouse.Cnds.IsOverObject,
 		C3.Plugins.Mouse.Acts.SetCursor,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
-		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Cnds.OnLayoutEnd,
 		C3.Plugins.Audio.Acts.Stop,
 		C3.Plugins.System.Acts.SetVar,
+		C3.Plugins.Sprite.Cnds.IsVisible,
 		C3.Plugins.System.Cnds.For,
 		C3.Plugins.Text.Acts.SetVisible,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Acts.CreateObject,
-		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Plugins.Sprite.Exps.IID,
 		C3.Plugins.System.Exps.tokenat,
@@ -4342,12 +4345,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Exps.Y,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
-		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.SubVar,
-		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Plugins.Sprite.Cnds.IsVisible,
-		C3.Plugins.Audio.Acts.SetPaused
+		C3.Plugins.System.Cnds.TriggerOnce
 	];
 };
 self.C3_JsPropNameTable = [
@@ -4565,11 +4565,14 @@ self.C3_ExpressionFuncs = [
 		() => -1,
 		() => 0,
 		() => "muzik",
-		() => -3,
+		() => "close",
+		() => "open",
 		() => "bilgi",
 		() => "background",
 		() => "ses",
+		() => "muzik1",
 		() => 10,
+		() => -3,
 		() => "x_degeri",
 		() => 11,
 		() => 19,
@@ -4642,9 +4645,7 @@ self.C3_ExpressionFuncs = [
 		() => 15,
 		() => 20,
 		() => 25,
-		() => 30,
-		() => "close",
-		() => "open"
+		() => 30
 ];
 
 
